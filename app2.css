@@ -1,0 +1,341 @@
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+/* Custom properties */
+:root{
+    --dark-color: #2d2c2c;
+    --purple-solid: #350a4f;
+    --purple-transparent: rgba(53, 10, 79, .7);
+    --purple-transparent-alt: rgba(53, 10, 79, .4);
+    --purple-light: rgba(143, 80, 251, 1);
+    --yellow-solid: rgba(250, 158, 44, 1);
+    --yellow-solid-transparent : rgba(250, 158, 44, .95);
+    --purple-light-transparent : rgba(143, 80, 251, .95);
+    --gradient-color: linear-gradient(to right, var(--yellow-solid), var(--purple-light));
+    --gradient-color-alt: linear-gradient(to right, var(--purple-light), var(--yellow-solid));
+    --gradient-color-third: linear-gradient(to right, var(--yellow-solid-transparent), var(--purple-light-transparent));
+}
+
+/* Basic reset */
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global styles */
+html{
+    font-size: 10px;
+}
+body{
+    font-family: sans-serif;
+    font-size: 1.5rem;
+   /* color: var(--dark-color); */
+}
+a{
+    text-decoration: none;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: bolder;
+    /* font-size: 2.5rem; */
+}
+ul{
+    list-style-type: none;
+    /* display: flex; */
+
+}
+button{
+    border: 0;
+    outline: none;
+}
+img{
+    width: 100%;
+}
+
+/* Reusable styles ----------------------------- */
+.container{
+    width: 100%;
+    max-width: 120rem;
+    padding: 0 1.5rem;
+    margin: 0 auto;
+}
+
+.logo img{
+    max-width: 80%;
+}
+
+.btn{
+    color: #fff;
+    font-size: 1.8rem;
+    padding: .4rem 4rem;
+    margin: 2rem 2rem;
+    border-radius: 2.5rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-gradient{
+    background-image: var(--gradient-color);
+}
+.btn-gradient:hover{
+    background-image: var(--gradient-color-alt);
+}
+.btn-purple{
+    background-color: var(--purple-solid);
+}
+
+.dots{
+    margin-top: .4rem;
+    font-size: 2.5rem;
+    opacity: 0.7;
+    margin-left: .7rem;
+}
+
+
+
+/* Header section ----------------------------- */
+.header{
+    width: 100%;
+    height: 6rem;
+    background-color: var(--purple-transparent);
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+.nav-bar{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.nav-list{
+    /* position : fixed; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: var(--gradient-color-third);
+    width: 100%;
+    height: 100vh;
+    /* Code to make it disappear */
+    transform: scale(0);
+    opacity: 0;
+    z-index: 0;
+}
+
+.nav-item{
+    margin: .7rem;
+}
+.nav-item:last-child{
+    margin-bottom: 0;
+}
+
+.nav-link{
+    color: #fff;
+    font-size: 2.5rem;
+}
+
+.hamburger-menu{
+    color: #fff;
+    font-size: 2.2rem;
+    z-index: 1500;
+    cursor: pointer;
+}
+.hamburger-menu .fa-xmark{
+    display: none;
+}
+
+/* Header section, javascript linked classes----------------- */
+ .menu-open .nav-list{
+    transform: scale(1);
+    opacity: 1;
+    transition: opacity .3s;
+}
+
+.menu-open .fa-xmark{
+    display: block;
+}
+.menu-open .fa-bars{
+    display: none;
+}
+
+/* Hero section --------------------------------------------------- */
+
+.hero{
+    background-image: url('imgs/hero_background.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    z-index: -3;
+}
+
+.hero::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    background-color: var(--purple-transparent-alt);
+    z-index: -2;
+}
+
+.hero-heading{
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .4rem;
+    text-shadow: 1px 1px 1rem rgba(0,0,0,.4);
+}
+
+.hero-sub-heading{
+    color: #fff;
+    font-family: 'Courgette', sans-serif;
+    font-size: 4rem;
+    font-weight: 200;
+}
+
+
+/* Input section ------------------------------------------------ */
+.booking{
+    background-image: var(--gradient-color);
+    padding: 2rem 1rem;
+}
+.form{
+   padding-top: 3rem;
+
+}
+
+.input-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2rem;
+}
+.input-group .input-label{
+    color: #fff;
+    font-size: 1.5  rem;
+    font-weight: bold;
+    margin-bottom: .7rem;
+    text-transform: uppercase;
+}
+.input-group .input{
+    height: 4rem;
+    color: #a8a7a5;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: .2rem;
+}
+
+.input-group .options{
+    height: 4rem;
+    color: #a8a7a5;
+    font-size: 1.5rem;
+    font-weight: 600;
+    letter-spacing: .2rem;
+}
+
+.form .btn-purple{
+    margin-left: 0;
+}
+.form .btn-purple:hover{
+    background-color:#56247f;
+}
+
+
+/* Hotel Hrid section ----------------------------------------- */
+
+/* Grid heading ---------- */
+.grid-heading{
+    text-align: center;
+    margin: 3rem auto;
+}
+.grid-main-heading{
+    color: #2e2e2d;
+    font-size: 5rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+}
+
+.grid-sub-heading{
+     font-weight: 600;
+    color: #a5a5a5;
+    font-size: 2rem;
+    font-family: 'Courgette', cursive;
+    display: block;
+}
+
+/* Hotel cards grid----------- */
+
+.hotel-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem,1fr));
+    gap: 2.5rem;
+}
+
+.hotel-card{
+    height: 35rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+.featured-hotels{
+    position: relative;
+    z-index: 0;
+
+}
+.featured-hotels::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: var(--purple-transparent-alt);
+    z-index: -1;
+}
+/* Making the images take up the whole card and make them appear as BG */
+.hotel-image{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    z-index: -2;
+}
+
+/* Styling the hotel name,price and rating */
+.hotel-name{
+    color: #fff;
+    font-size: 2.4rem;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.hotel-price{
+    margin: .5rem auto;
+    color: #fff;
+    font-size: 1.8rem;
+}
+.hotel-rating{
+    color: yellow;
+}

@@ -1,0 +1,601 @@
+/* Google font */
+@import url('https://fonts.googleapis.com/css2?family=Courgette&display=swap');
+
+/* Basic reset */
+ *, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+/* Custom properties */
+:root{
+    --dark-color: #2d2c2c;
+    --purple-solid: #350a4f;
+    --purple-transparent: rgba(53, 10, 79, .7);
+    --purple-transparent-alt: rgba(53, 10, 79, .4);
+    --purple-light: #8f50fb;
+    --yellow-solid: #fa9e2c;
+    --gradient-color: linear-gradient(to right, var(--yellow-solid), var(--purple-light));
+    --gradient-color-alt: linear-gradient(to right, var(--purple-light), var(--yellow-solid));
+}
+
+/* Global styles ------------*/
+html{
+    font-size: 10px; /*to make use of rem easier*/
+}
+
+body{
+    font-family: 'Open sans', sans-serif;
+    font-size: 1.6rem;
+    color: var(--dark-color);
+    
+} 
+a{
+    text-decoration: none;
+    color: inherit;
+}
+ul{
+    list-style: none;
+}
+
+section{
+    padding: 5rem 0;
+}
+
+/* Resuable styles ---------- */
+.container {
+    width: 100%;
+    max-width: 120rem;
+    padding: 0 1.8rem;
+    margin :0 auto;
+}
+
+.btn{
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    /* background-color: pink; */
+    padding: .5rem 3rem;
+    border: none;
+    border-radius: 10rem;
+    display: inline-flex; 
+    /*so that the dots icon dont actt crazy*/
+    align-items: center;
+}
+.btn-form{
+    margin-top: 2.5rem;
+    cursor: pointer;
+}
+
+.btn-gradient {
+    /* to apply a gradient using a variable,
+    use background-image instead of backgrounnd-color */
+    background-image: var(--gradient-color);
+}
+.btn-gradient:hover{
+    background-image: var(--gradient-color-alt);
+    /* transition: background-image .5s; */
+}
+.dots{
+    font-size: 2.4rem;
+    margin-left: 0.5rem;
+    opacity: .70;
+}
+
+
+
+
+
+/* Building it mobile first, then using @media to adapt to bigger */
+
+/* Header styles ------------ */
+.header{
+    color: #fff;
+    width: 100%;
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    top : 0;
+    left: 0;
+    background-color: var(--purple-transparent);
+    /* giving high z index ensures it stays on top of the website */
+    z-index: 999;
+    transition: background-color .3s;
+}
+/* When we scroll this class is applied to header, look js */
+ .active{
+    background-color: var(--purple-solid);
+    transition: background-color .5s;
+}
+
+/* header styles - NAV ------------ */
+.nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.logo img{
+    max-width: 80%;
+}
+.hamburger-menu{
+    font-size: 2.5rem;
+    color: #fff;
+    cursor: pointer;
+    position: relative; /*to offset it from its position later on*/
+    z-index: 1500;
+}
+
+.hamburger-menu .fa-times{
+    display: none;
+}
+
+
+.nav-list{
+    position: fixed; /*reltaive to the VP*/
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--purple-solid) ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1400;
+
+    /* hiding the list on mobile */
+    opacity: 0;
+    transform: scale(0);
+    /* ^^makes the size 0, but the element is there*/
+    /* display: none; */
+   
+}
+
+/* Class that will be applied to the header & influence the navlist with JS  */
+.menu-open .nav-list{
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity .5s;
+}
+.menu-open .fa-bars{
+    display: none;
+}
+.menu-open .fa-times{
+    display: block;
+    
+}
+
+
+.nav-item:not(:last-child){
+    margin-bottom: .5rem ;
+}
+
+.nav-link{
+    /* block is given cuz links are inline and padding wont be applied to them */
+    display: block;
+    color: #FFF;
+    font-size: 2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 1rem;
+}
+
+/* HERO section ---------------------------------- */
+
+.hero{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('imgs/hero_background.jpg') center no-repeat;
+    background-size: cover;
+    text-align: center;
+    position: relative;
+    /* so that .hero::before appears on top of it */
+    z-index: 1;
+}
+/* due to z-index, this pseudo element is sandwiched bw text and 
+    parent .hero container */
+.hero::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    background-color: var(--purple-transparent-alt);
+    /* so that it goes behind the text */
+    z-index: -1;
+}
+
+.hero .main-heading{
+    color: #fff;
+    line-height: 1;
+    text-shadow: 1px 1px 1rem rgba(0,0,0,0.5);
+    margin-bottom: 2.5rem;
+}
+
+.title{
+    font-size: 5rem;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+}
+.subtitle{
+    font-size: 3.5rem;
+    font-weight: 200;
+    font-family: 'Courgette', cursive;
+}
+
+
+
+
+/* Booking sections styles--------------------- */
+.booking{
+    background-image: var(--gradient-color);
+}
+.input-group{
+    margin-bottom: 1.5rem;
+}
+.input-label{
+    /* so  that it takes a whole block and input falls into next line */
+    display: block;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.input,
+.options{
+    outline: none;
+    border: none;
+    width: 100%;
+    min-height: 4rem;
+    padding: 1rem;
+    font-weight: bold;
+    color: #a5a5a5;
+    letter-spacing: 2px;
+    font-family: 'Opens sans', sans-serif;
+    /* resize: none; */
+}
+
+.btn-purple{
+    background-color: var(--purple-solid);
+}
+.btn-purple:hover{
+    background-color: #56247f;
+}
+
+/* ---------HOTEL grid----------------- */
+.section-head{
+    text-align: center;
+    margin-bottom: 5rem;
+}
+.heading{
+    font-size: 4rem;
+    text-transform: uppercase;
+    display: block;
+
+}
+
+.sub-heading{
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #a5a5a5;
+    font-family: 'Courgette', cursive;
+}
+
+/* Grid LAYOUT of hotels -------------- */
+
+.hotel-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2.5rem;
+}
+.grid-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    padding: 1rem;
+}
+.featured-hotels{
+    height: 35rem;
+    position: relative;
+    z-index: 0;
+}
+
+.featured-hotels::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--purple-transparent-alt );
+    z-index: -1;
+}
+/* to take care of the images */
+.hotel-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -2;     
+}
+
+
+.hotel-name{
+    font-size: 2.5rem;
+
+}
+.hotel-price{
+    font-size: 1.8rem;
+}
+.hotel-rating{
+    margin: 1rem 0 2.5rem;
+}
+.rating{
+    color: yellow;
+}
+
+  
+/* Offer section styles------------------------------------------ */
+
+.offer{
+    background: linear-gradient(to right, rgba(250,158,44,.8), rgba(143,80,251,.8)),
+    url('imgs/the_paradise_bg.jpg'), bottom center no-repeat; 
+    /* background-image: linear-gradient(to right, rgba(250,158,44,.8), rgba(143,80,251,.8)),
+    url('imgs/the_paradise_bg.jpg');
+    background-position: bottom center;
+    background-repeat: no-repeat, no-repeat; */
+    background-size: cover;
+
+}
+
+.offer-content{
+    background-color: #fff;
+    text-align: center;
+    padding: 5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden; /*to hide overflowing outline*/
+}
+.discount{
+    background-color: var(--yellow-solid);
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: .8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    outline: 2px solid var(--yellow-solid);
+    outline-offset: .5rem; 
+}
+.hotel-description{
+    color: #a5a5a5;
+    margin-bottom: 2.5rem;
+}
+
+/* Room grid section ---------------------------------------- ---*/
+
+.hotel-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 2.5rem;
+}
+
+.grid-item-room{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    z-index: 10;
+}
+.featured-rooms{
+    position: relative;
+
+}
+
+.image-wrapper{
+    height: 30rem;
+    position: relative;
+    margin-bottom: .6rem;
+}
+.image-wrapper::before{
+    content: '';
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    background-color: var(--purple-transparent-alt);
+}
+.room-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    top: 0;
+    left: 0;
+    /* position: absolute; */
+    z-index: -7;
+    
+}
+.room-name{
+    font-size: 2rem;
+    background-color: var(--yellow-solid);
+    top: 74%;
+    position: absolute;
+    color: #fff;
+    padding: .7rem;
+
+}
+.room-price{
+    margin-bottom: 1rem ;
+}
+.rate{
+    color: var(--yellow-solid);
+    font-size: 2rem;
+    font-weight: 800;
+    display: inline-block;
+}
+.per-night{
+    display: inline-block;
+    color: #a5a5a5;
+    font-weight: 700;
+}
+.description{
+    color: #a5a5a5;
+}
+
+/* Footer section ------------------------------------------------------------ */
+.footer{
+    padding: 5rem 0;
+    background-color: var(--purple-solid);
+    color: #fff;
+}
+
+.footer-content-brand{
+    margin-bottom: 5rem;
+}
+.footer .description{
+    color: inherit;
+}
+
+
+.footer-heading{
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.social-media{
+    display: flex;
+}
+.sm-link{
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
+    border: 2px solid var(--yellow-solid);
+    border-radius: 50%;
+    display: flex;
+    margin-right: 1rem;
+    transition: background-color .3s;
+}
+.sm-link:hover{
+    background-color: var(--yellow-solid);
+    color: var(--dark-color);
+}
+/* another way of centering things, since the parent has display flex, margin auto centers things */
+.sm-link i{
+    margin: auto;
+}
+
+/* MEDIA queries --------------------------------------------------- */
+/* when going from small screen to large, min-width is use to create break points */
+
+/* when screen width crosses 768 px */
+@media (min-width: 768px){
+    /* header section styles */
+    .header{
+        height: 10rem;
+    }
+    .active{
+        height: 6rem;
+
+    }
+    /* hero section style */
+    .title{
+        font-size: 8rem;
+    }
+    /* footer section styles */
+    .footer-content{
+        display: flex;
+        justify-content: space-between;
+    }
+    .footer-content-brand{
+        margin-bottom: 0;
+        flex: 0 0 60%;
+
+    }
+    .footer .description{
+        margin-top: 2.5rem;
+    }
+    .footer-heading{
+        margin-bottom: 5rem;
+    }
+    .social-media-wrap{
+        flex: 0 0 40%;
+    }
+
+}
+
+    /* NEXT BREAKPOINT , when screen width croses 1000px*/
+ @media (min-width: 1000px) {
+        /* Header section menu */
+        .hamburger-menu{
+            display: none;
+        }
+        /* Resetting everything that we did for mobile */
+        .nav-list{
+            position: initial;
+            width: initial;
+            height: initial;
+            background-color: transparent;
+            flex-direction: row;
+            justify-content: initial;
+            opacity: 1;
+            transform: scale(1);
+        }
+        .nav-link{
+            font-size: 1.2rem;
+            font-weight: normal;
+        }
+        .nav-link:hover{
+            color: var(--yellow-solid);
+        }
+        .nav-item:not(:last-child){
+            margin-bottom: 0 ;
+        }
+        /* Hero section styles */
+        .title{
+            font-size: 12rem;
+        }
+        .subtitle{
+            font-size: 4.6rem;
+        }
+
+        /* Booking section styles */
+        .form{
+            display: flex;
+            justify-content: space-between;
+        }
+        .form .input-group{
+            margin-bottom: 0;
+
+        }
+        .form .input-group:first-child{
+            flex: 0 0 30%;
+        }
+        .input-group .options{
+            min-width: 10rem;
+        }
+
+
+        
+        
+    }

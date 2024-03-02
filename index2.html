@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travelix</title>
+    <link rel="stylesheet" href="app2.css" />
+  </head>
+  <body>
+    <!-- Header section ------------------------------------------------------- -->
+    <header class="header">
+      <div class="container">
+        <div class="nav-bar">
+          <a href="index2.html" class="logo">
+            <img src="imgs/logo.png" alt="" />
+          </a>
+          <ul class="nav-list">
+            <li class="nav-item"><a href="" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="" class="nav-link">Offers</a></li>
+            <li class="nav-item"><a href="" class="nav-link">Contact</a></li>
+          </ul>
+          <div class="hamburger-menu">
+            <i class="fa-solid fa-bars"></i>
+            <i class="fa-solid fa-xmark"></i>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main HERO section-------------------------------------------------------------------- -->
+    <main>
+      <section class="hero">
+        <div class="container">
+          <div class="main-heading">
+            <h1 class="hero-heading">Discover</h1>
+            <h2 class="hero-sub-heading">Luxury hotels</h2>
+          </div>
+
+          <a href="#" class="btn btn-gradient"
+            >Explore now<span><i class="fa-solid fa-ellipsis dots"></i></span
+          ></a>
+        </div>
+      </section>
+
+      <!-- Input / Booking section----------------------------------------------------------- -->
+      <section class="booking">
+        <div class="container">
+          <form action="" class="form">
+            <div class="input-group">
+              <label for="dest" class="input-label">Destination</label>
+              <input type="text" class="input" />
+            </div>
+            <div class="input-group">
+              <label for="checkin" class="input-label">Check in</label>
+              <input type="date" class="input" />
+            </div>
+            <div class="input-group">
+              <label for="checkout" class="input-label">Check out</label>
+              <input type="date" class="input" />
+            </div>
+            <div class="input-group">
+              <label for="adults" class="input-label">Adults</label>
+              <select name="adult" id="adults" class="options">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="child" class="input-label">Child</label>
+              <select name="adult" id="child" class="options">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+              </select>
+            </div>
+            <button class="btn btn-from btn-purple" type="submit">
+              Search <span><i class="fa-solid fa-ellipsis dots"></i></span>
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <!-- Hotel GRID section ------------------------------------------------------------------ -->
+      <!-- hotels ke andar grid heading and hotels ka grid -->
+      <section class="hotels">
+        <div class="container">
+          <div class="grid-heading">
+            <span class="grid-main-heading">Explore</span>
+            <span class="grid-sub-heading">Our beautiful hotels</span>
+          </div>
+          <div class="hotel-grid">
+            <div class="hotel-card featured-hotels">
+              <img
+                src="imgs/hotel_astro_resort.jpg"
+                alt=""
+                class="hotel-image"
+              />
+              <h5 class="hotel-name">Astro world</h5>
+              <span class="hotel-price">From $200/Night</span>
+              <div class="hotel-rating">
+                <i class="fas fa-star rating"></i
+                ><i class="fas fa-star rating"></i
+                ><i class="fas fa-star rating"></i
+                ><i class="fas fa-star rating"></i
+                ><i class="fas fa-star-half rating"></i>
+              </div>
+              <a href="#" class="btn btn-gradient"
+                >Book now <span><i class="fa-solid fa-ellipsis dots"></i></span
+              ></a>
+            </div>
+            <div class="hotel-card featured-hotels">
+              <img
+                src="imgs/hotel_the_enchanted_garden.jpg"
+                alt=""
+                class="hotel-image"
+              />
+              <h5 class="hotel-name">Enchanted garden</h5>
+              <span class="hotel-price">From $200/Night</span>
+              <div class="hotel-rating">
+                <i class="fas fa-star rating"></i
+                ><i class="fas fa-star rating"></i
+                ><i class="fas fa-star rating"></i
+                ><i class="fas fa-star rating"></i
+                ><i class="fas fa-star-half rating"></i>
+              </div>
+              <a href="#" class="btn btn-gradient"
+                >Book now <span><i class="fa-solid fa-ellipsis dots"></i></span
+              ></a>
+            </div>
+            <div class="hotel-card featured-hotels">
+              <img src="imgs/the_paradise_bg.jpg" alt="" class="hotel-image" />
+              <h5 class="hotel-name">Hotel paradise</h5>
+              <span class="hotel-price">From $200/Night</span>
+              <div class="hotel-rating">
+                <i class="fas fa-star rating"></i
+                ><i class="fas fa-star rating"></i
+                ><i class="fas fa-star rating"></i
+                ><i class="fas fa-star rating"></i
+                ><i class="fas fa-star-half rating"></i>
+              </div>
+              <a href="#" class="btn btn-gradient"
+                >Book now <span><i class="fa-solid fa-ellipsis dots"></i></span
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="offer"></section>
+    </main>
+
+    <script
+      src="https://kit.fontawesome.com/eaf438da2a.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="script2.js"></script>
+  </body>
+</html>
